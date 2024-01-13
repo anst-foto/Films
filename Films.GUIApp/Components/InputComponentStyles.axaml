@@ -1,0 +1,13 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="Label.content">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Padding" Value="3"/>
+    </Style>
+
+    <Style Selector="TextBox.content">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+</Styles>
+
