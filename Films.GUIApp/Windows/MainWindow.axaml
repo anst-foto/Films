@@ -2,15 +2,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:component="clr-namespace:Films.GUIApp.Components"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Films.GUIApp.MainWindow"
+        x:Class="Films.GUIApp.Windows.MainWindow"
         Title="{StaticResource AppTitle}">
 
-    <Grid ColumnDefinitions="*,2*">
-        <ListBox Grid.Column="0"></ListBox>
+    <Window.Styles>
+        <StyleInclude Source="MainWindowStyles.axaml"/>
+    </Window.Styles>
 
-        <StackPanel Grid.Column="1">
-            <
+    <Grid ColumnDefinitions="*,2*">
+        <ListBox Grid.Column="0"
+                 x:Name="Films"
+                 Classes="margin"
+                 SelectionChanged="Films_OnSelectionChanged"/>
+
+        <StackPanel Grid.Column="1"
+                    Classes="margin">
+            <Panel Classes="margin">
+                <component:InputComponent x:Name="InputFilmName"
+                                          LabelName="Название фильма"
+                                          InputPlaceholder="Введите название фильма"
+                                          KeyName="{StaticResource FilmNameKey}"
+                                          Classes="margin"/>
+            </Panel>
+
+            <Grid ColumnDefinitions="5*,*"
+                  Classes="margin">
+                <Panel Grid.Column="0">
+                    <component:InputComponent x:Name="InputFilmPath"
+                                              LabelName="Путь"
+                                              InputPlaceholder="Введите путь к фильму"
+                                              KeyName="{StaticResource FilmPathKey}"/>
+                </Panel>
+
+                <Panel Grid.Column="1"
+                       Classes="margin">
+                    <Button x:Name="ButtonOpenFile"
+                            Content="Выбрать файл"
+                            Click="ButtonOpenFile_OnClick"/>
+                </Panel>
+            </Grid>
+
+            <StackPanel Classes="content margin">
+                <Button x:Name="ButtonPlay"
+                        Content="Воспроизвести"
+                        Click="ButtonPlay_OnClick"/>
+                <Button x:Name="ButtonSave"
+                        Content="Сохранить"
+                        Click="ButtonSave_OnClick"/>
+                <Button x:Name="ButtonClear"
+                        Content="Очистить"
+                        Click="ButtonClear_OnClick"/>
+                <Button x:Name="ButtonDelete"
+                        Content="Удалить"/>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>
